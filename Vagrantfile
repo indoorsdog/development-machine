@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 librarian_name = 'librarian'
-librarian_version = '0.0.23'
+librarian_version = '0.0.24'
 begin
   Gem::Specification.find_by_name(librarian_name, librarian_version)
 rescue Gem::LoadError

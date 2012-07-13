@@ -1,0 +1,24 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.0.0)
+    nodejs (0.6.11)
+      build-essential (>= 0.0.0)
+    tmux (1.0.0)
+    yum (0.5.2)
+
+GIT
+  remote: https://github.com/opscode-cookbooks/python
+  ref: master
+  sha: 3d8dd96b457091b6ec12635ec3fef9e8d0a5f719
+  specs:
+    python (1.0.6)
+      build-essential (>= 0.0.0)
+      yum (>= 0.0.0)
+
+DEPENDENCIES
+  build-essential (>= 0)
+  nodejs (>= 0)
+  python (>= 0)
+  tmux (>= 0)
+

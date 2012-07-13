@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+
+cookbook 'build-essential'
+
+cookbook 'python',
+    :git => 'https://github.com/opscode-cookbooks/python'
+
+cookbook 'nodejs'
+
+cookbook 'tmux'

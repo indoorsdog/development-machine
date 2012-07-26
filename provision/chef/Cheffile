@@ -11,4 +11,6 @@ cookbook 'python',
 
 cookbook 'nodejs'
 
+cookbook 'vim'
+
 cookbook 'tmux'

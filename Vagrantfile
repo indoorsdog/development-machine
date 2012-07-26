@@ -45,6 +45,8 @@ Vagrant::Config.run do |config|
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
+  # config.vm.share_folder("home", "/home/vagrant", "home/vagrant", :nfs => true)
+  # config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
 
   config.vm.provision :chef_solo do |chef|
 
@@ -61,35 +63,50 @@ Vagrant::Config.run do |config|
 
     chef.cookbooks_path = ['provision/chef/cookbooks', 'provision/chef/site-cookbooks']
 
-    chef.add_recipe 'build-essential'
+    chef.add_recipe 'site::packages'
+    chef.add_recipe 'site::symlinks'
+    chef.add_recipe 'site::rubygems'
 
-    chef.add_recipe 'site::git'
+    chef.add_recipe 'build-essential'
 
     # http://grahamwideman.wikispaces.com/Python-+import+statement
     # pip install -r requirements.txt
-    chef.add_recipe 'python::source'
-    chef.add_recipe 'python::pip'
-    chef.add_recipe 'python::virtualenv'
-    chef.add_recipe 'site::python'
+#    chef.add_recipe 'python::source'
+#    chef.add_recipe 'python::pip'
+#    chef.add_recipe 'python::virtualenv'
+#    chef.add_recipe 'site::python'
 
     # package.json
     # npm install -d
     # http://tnovelli.net/blog/blog.2011-08-27.node-npm-user-install.html
-    chef.add_recipe 'nodejs'
+#    chef.add_recipe 'nodejs'
 
-    chef.add_recipe 'tmux'
+#    chef.add_recipe 'vim'
+#    chef.add_recipe 'tmux'
 
     chef.json = {
+      'vagrant' => {
+        'home' => '/vagrant/home'
+      },
     	'python' => {
         'version' => '3.2.3',
         'distribute_install_py_version' => '3.2'
       },
-      'git' => {
-        'version' => '1:1.7.9.5-1'
-      },
       'nodejs' => {
-        'version' => '0.6.18'
+        'version' => '0.8.2'
       },
+      'symlinks' => {
+        '/vagrant/home/asdf' => '/asdf'
+      },
+      'packages' => {
+        'git' => '1:1.7.9.5-1',
+        'git-flow' => '0.4.1-2',
+        'git-man' => '1:1.7.9.5-1',
+        'tree' => '1.5.3-2'
+      },
+      'rubygems' => {
+        'tmuxinator' => '0.5.0'
+      }
     }
   end
 

@@ -91,7 +91,8 @@ Vagrant::Config.run do |config|
 	    '/home/vagrant/.vim/autoload/pathogen.vim' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
           },
 	  'git' => {
-	    '/home/vagrant/.vim/bundle' => 'https://github.com/kchmck/vim-coffee-script.git'
+	    '/home/vagrant/.vim/bundle' => 'https://github.com/kchmck/vim-coffee-script.git',
+	    '/home/vagrant/.vim/bundle' => 'https://github.com/altercation/vim-colors-solarized'
           }
         } 
       },

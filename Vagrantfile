@@ -66,6 +66,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'
     chef.add_recipe 'site::rubygems'
+    chef.add_recipe 'site::npm'
 
     chef.add_recipe 'build-essential'
 

@@ -85,8 +85,21 @@ Vagrant::Config.run do |config|
 #    chef.add_recipe 'tmux'
 
     chef.json = {
+      'download' => {
+	'vim' =>  {
+	  'file' => {
+	    '/home/vagrant/.vim/autoload/pathogen.vim' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
+          },
+	  'git' => {
+	    '/home/vagrant/.vim/bundle' => 'https://github.com/kchmck/vim-coffee-script.git'
+          }
+        } 
+      },
       'nodejs' => {
         'version' => '0.8.2'
+      },
+      'npm' => {
+	'coffee-script' => '1.3.3'
       },
       'packages' => {
         'git' => '1:1.7.9.5-1',

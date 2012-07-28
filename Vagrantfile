@@ -96,13 +96,14 @@ Vagrant::Config.run do |config|
         'version' => '0.8.2'
       },
       'symlinks' => {
-        '/vagrant/home/asdf' => '/asdf'
+        '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
       },
       'packages' => {
         'git' => '1:1.7.9.5-1',
         'git-flow' => '0.4.1-2',
         'git-man' => '1:1.7.9.5-1',
-        'tree' => '1.5.3-2'
+        'tree' => '1.5.3-2',
+        'vim' => '2:7.3.429-2ubuntu2.1'
       },
       'rubygems' => {
         'tmuxinator' => '0.5.0'

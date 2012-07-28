@@ -85,18 +85,8 @@ Vagrant::Config.run do |config|
 #    chef.add_recipe 'tmux'
 
     chef.json = {
-      'vagrant' => {
-        'home' => '/vagrant/home'
-      },
-    	'python' => {
-        'version' => '3.2.3',
-        'distribute_install_py_version' => '3.2'
-      },
       'nodejs' => {
         'version' => '0.8.2'
-      },
-      'symlinks' => {
-        '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
       },
       'packages' => {
         'git' => '1:1.7.9.5-1',
@@ -107,8 +97,15 @@ Vagrant::Config.run do |config|
         'tree' => '1.5.3-2',
         'vim' => '2:7.3.429-2ubuntu2.1'
       },
+      'python' => {
+        'version' => '3.2.3',
+        'distribute_install_py_version' => '3.2'
+      },
       'rubygems' => {
         'tmuxinator' => '0.5.0'
+      },
+      'symlinks' => {
+        '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
       }
     }
   end

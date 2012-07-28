@@ -102,6 +102,8 @@ Vagrant::Config.run do |config|
         'git' => '1:1.7.9.5-1',
         'git-flow' => '0.4.1-2',
         'git-man' => '1:1.7.9.5-1',
+	'nodejs' => '0.6.12~dfsg1-1ubuntu1',
+	'npm' => '1.1.4~dfsg-1',
         'tree' => '1.5.3-2',
         'vim' => '2:7.3.429-2ubuntu2.1'
       },

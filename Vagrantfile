@@ -66,7 +66,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'
     chef.add_recipe 'site::rubygems'
-    chef.add_recipe 'site::npm'
+#    chef.add_recipe 'site::npm'
 
     chef.add_recipe 'build-essential'
 
@@ -86,42 +86,44 @@ Vagrant::Config.run do |config|
 #    chef.add_recipe 'tmux'
 
     chef.json = {
-      'download' => {
-	'vim' =>  {
-	  'file' => {
-	    '/home/vagrant/.vim/autoload/pathogen.vim' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
-          },
-	  'git' => {
-	    '/home/vagrant/.vim/bundle' => 'https://github.com/altercation/vim-colors-solarized',
-	    '/home/vagrant/.vim/bundle' => 'https://github.com/kchmck/vim-coffee-script.git'
-          }
-        } 
+      'site' => {
+        'download' => {
+	  'vim' =>  {
+	    'file' => {
+	      '/home/vagrant/.vim/autoload/pathogen.vim' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
+            },
+	    'git' => {
+	      '/home/vagrant/.vim/bundle' => 'https://github.com/altercation/vim-colors-solarized',
+	      '/home/vagrant/.vim/bundle' => 'https://github.com/kchmck/vim-coffee-script.git'
+            }
+          } 
+        },
+        'npm' => {
+      	  'coffee-script' => '1.3.3'
+        },
+        'packages' => {
+          'git' => '1:1.7.9.5-1',
+          'git-flow' => '0.4.1-2',
+          'git-man' => '1:1.7.9.5-1',
+	  'nodejs' => '0.6.12~dfsg1-1ubuntu1',
+	  'npm' => '1.1.4~dfsg-1',
+          'tree' => '1.5.3-2',
+          'vim' => '2:7.3.429-2ubuntu2.1'
+        },
+        'rubygems' => {
+          'tmuxinator' => '0.5.0'
+        },
+        'symlinks' => {
+          '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
+        }
       },
       'nodejs' => {
         'version' => '0.8.2'
-      },
-      'npm' => {
-	'coffee-script' => '1.3.3'
-      },
-      'packages' => {
-        'git' => '1:1.7.9.5-1',
-        'git-flow' => '0.4.1-2',
-        'git-man' => '1:1.7.9.5-1',
-	'nodejs' => '0.6.12~dfsg1-1ubuntu1',
-	'npm' => '1.1.4~dfsg-1',
-        'tree' => '1.5.3-2',
-        'vim' => '2:7.3.429-2ubuntu2.1'
       },
       'python' => {
         'version' => '3.2.3',
         'distribute_install_py_version' => '3.2'
       },
-      'rubygems' => {
-        'tmuxinator' => '0.5.0'
-      },
-      'symlinks' => {
-        '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
-      }
     }
   end
 

@@ -1,4 +1,4 @@
-node[:rubygems].each do |GEMNAME, version|
+node[:site][:rubygems].each do |GEMNAME, version|
   gem_package GEMNAME do
     version version
     action :install

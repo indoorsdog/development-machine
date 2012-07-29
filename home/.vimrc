@@ -1,13 +1,14 @@
 call pathogen#infect() " pathogen vimplugin, auto load plugins in /bundle
 syntax on " syntax coloring
-set nocompatible 
+set nocompatible
 set incsearch " incremental find-as-you-type searching
 set backspace=indent,eol,start
 set history=50 " 50 command history buffer
 set autoread
 let g:solarized_italic=0 " turn off italicizing in solarized
+let g:solarized_termcolors=256 " when using vim, set color palette = 256
 colorscheme solarized " set solarized as colorscheme (pathogen-enabled)
-set background=dark " again, for solarized, 'dark' version
+set background=light " again, for solarized, 'dark' version
 set nobackup "no backup on save
 set nowb
 set noswapfile
@@ -22,9 +23,9 @@ set tm=500
 set number " show line numbers
 map Y y$ " make 'Y' behave like other capitals 'D' 'C' etc -- yank from cursor to EOL
 set hlsearch " highlight search matches
-nnoremap <esc> :noh<return><esc> " escape key un-highlights matches
+nnoremap <C-L> :nohl<CR><C-L>
 set ls=2
-set lines=50 " show 50 rows 
+set lines=50 " show 50 rows
 set columns=120 " show 120 columns
 set magic
 set autoindent " auto-indent
@@ -40,7 +41,7 @@ set guioptions-=m " turn off menu bar
 set guioptions-=T " turn off toolbar
 set shiftwidth=4
 set softtabstop=4
-au FileType html,xhtml,xml,coffee,scss,scala,rb setl sw=2 sts=2
+au FileType html,xhtml,xml,coffee,scss,scala,ruby setl sw=2 sts=2
 au Filetype coffee setl colorcolumn=80
 set smarttab
 set lbr

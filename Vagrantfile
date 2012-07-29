@@ -66,9 +66,10 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'
     chef.add_recipe 'site::rubygems'
-#    chef.add_recipe 'site::npm'
+    chef.add_recipe 'site::downloads'
+    chef.add_recipe 'site::npm'
 
-    chef.add_recipe 'build-essential'
+#    chef.add_recipe 'build-essential'
 
     # http://grahamwideman.wikispaces.com/Python-+import+statement
     # pip install -r requirements.txt
@@ -87,16 +88,16 @@ Vagrant::Config.run do |config|
 
     chef.json = {
       'site' => {
-        'download' => {
+        'downloads' => {
 	  'vim' =>  {
 	    'file' => {
 	      '/home/vagrant/.vim/autoload/pathogen.vim' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
             },
 	    'git' => {
-	      '/home/vagrant/.vim/bundle' => 'https://github.com/altercation/vim-colors-solarized',
-	      '/home/vagrant/.vim/bundle' => 'https://github.com/kchmck/vim-coffee-script.git'
+	      '/home/vagrant/.vim/bundle/vim-colors-solarized' => 'https://github.com/altercation/vim-colors-solarized',
+	      '/home/vagrant/.vim/bundle/vim-coffee-script' => 'https://github.com/kchmck/vim-coffee-script.git'
             }
-          } 
+          }
         },
         'npm' => {
       	  'coffee-script' => '1.3.3'

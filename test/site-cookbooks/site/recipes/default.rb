@@ -11,6 +11,9 @@ remote_file '/home/vagrant/builds/indoorsdog/development-machine/test/vagrant_1.
   source 'http://files.vagrantup.com/packages/eb590aa3d936ac71cbf9c64cf207f148ddfc000a/vagrant_1.0.3_i686.deb'
 end
 
-dpkg_package 'vagrant' do
-  source 'http://files.vagrantup.com/packages/eb590aa3d936ac71cbf9c64cf207f148ddfc000a/vagrant_1.0.3_i686.deb'
+package 'vagrant_1.0.3_i686.deb' do
+  provider Chef::Provider::Package::Dpkg
+  source "http://files.vagrantup.com/packages/eb590aa3d936ac71cbf9c64cf207f148ddfc000a/vagrant_1.0.3_i686.deb"
+  action :install
 end
+

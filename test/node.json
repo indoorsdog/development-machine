@@ -1,3 +1,6 @@
 {
-    "run_list": [ "recipe[virtualbox]", "recipe[site]" ]
+        "run_list": [
+                    "recipe[virtualbox]",
+                "recipe[site]"
+                        ]
 }

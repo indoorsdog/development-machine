@@ -1,5 +1,7 @@
 #!/bin/sh
 
+whoami
+ls
 cd test
 gem install chef --version 10.12.0
 gem install librarian --version 0.0.24

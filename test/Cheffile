@@ -3,4 +3,4 @@
 
 site 'http://community.opscode.com/api/v1'
 
-cookbook 'ntp'
+cookbook 'virtualbox', '0.6.1'

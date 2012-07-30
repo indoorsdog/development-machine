@@ -1,1 +1,4 @@
-script: ./test/test.sh
+language: ruby
+rvm:
+ - 1.9.3
+scipt: ./test/test.sh

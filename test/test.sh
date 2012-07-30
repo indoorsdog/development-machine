@@ -1,4 +1,3 @@
 #!/bin/sh
 
-rvm use system
-gem list
+gem install chef --version 10.12.0

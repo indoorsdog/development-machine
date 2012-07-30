@@ -13,7 +13,7 @@ end
 
 package 'vagrant_1.0.3_i686.deb' do
   provider Chef::Provider::Package::Dpkg
-  source "http://files.vagrantup.com/packages/eb590aa3d936ac71cbf9c64cf207f148ddfc000a/vagrant_1.0.3_i686.deb"
+  source '/home/vagrant/builds/indoorsdog/development-machine/test/vagrant_1.0.3_i686.deb'
   action :install
 end
 

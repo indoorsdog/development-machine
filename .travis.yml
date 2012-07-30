@@ -1,1 +1,1 @@
-script: gem list
+script: ./test/test.sh

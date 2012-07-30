@@ -1,1 +1,1 @@
-script: chef
+script: gem list

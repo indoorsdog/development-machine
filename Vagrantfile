@@ -69,23 +69,6 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::downloads'
     chef.add_recipe 'site::npm'
 
-#    chef.add_recipe 'build-essential'
-
-    # http://grahamwideman.wikispaces.com/Python-+import+statement
-    # pip install -r requirements.txt
-#    chef.add_recipe 'python::source'
-#    chef.add_recipe 'python::pip'
-#    chef.add_recipe 'python::virtualenv'
-#    chef.add_recipe 'site::python'
-
-    # package.json
-    # npm install -d
-    # http://tnovelli.net/blog/blog.2011-08-27.node-npm-user-install.html
-#    chef.add_recipe 'nodejs'
-
-#    chef.add_recipe 'vim'
-#    chef.add_recipe 'tmux'
-
     chef.json = {
       'site' => {
         'downloads' => {

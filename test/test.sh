@@ -11,3 +11,9 @@ cd ..
 /opt/vagrant/bin/vagrant up
 /opt/vagrant/bin/vagrant ssh --command 'touch /vagrant/test/created_in_vm''
 ls test
+if [ -f test/created_in_vm ]
+then
+  exit 0
+else
+  exit 1
+fi

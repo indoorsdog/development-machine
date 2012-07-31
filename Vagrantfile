@@ -72,7 +72,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'rbenv'
     # is this redundant? https://github.com/RiotGames/rbenv-cookbook/issues/8
     chef.add_recipe 'rbenv::ruby_build'
-    chef.add_recipe 'rbenv::ohai'
+    chef.add_recipe 'rbenv::ohai_plugin'
 
     chef.json = {
       'site' => {

@@ -10,3 +10,4 @@ sudo dpkg -i vagrant_1.0.3_i686.deb
 cd ..
 /opt/vagrant/bin/vagrant up
 /opt/vagrant/bin/vagrant ssh --command 'touch /vagrant/test/created_in_vm''
+ls test

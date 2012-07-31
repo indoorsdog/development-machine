@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-#^syntax detection
-
-site 'http://community.opscode.com/api/v1'
-
-cookbook 'virtualbox',
-  :git => 'https://github.com/travis-ci/travis-cookbooks',
-  :path => 'worker_host/virtualbox'
-

@@ -68,6 +68,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::rubygems'
     chef.add_recipe 'site::downloads'
     chef.add_recipe 'site::npm'
+    chef.add_recipe 'site::chmod'
 
     chef.add_recipe 'rbenv'
     # is this redundant? https://github.com/RiotGames/rbenv-cookbook/issues/8

@@ -48,6 +48,13 @@ Vagrant::Config.run do |config|
   # config.vm.share_folder("home", "/home/vagrant", "home/vagrant", :nfs => true)
   # config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
 
+  # patches.sh sits alongside this file and should contain scripting updates to the
+  # installed dependencies of the vagrant base box, when necessary (e.g. provisioner
+  # version bumps). this shell provisioner runs first guaranteeing downstream exposure.
+  # the should be temporary, in cases when you can't wait for Vagrant to update their
+  # base boxes.
+  config.vm.provision :shell, :path => 'patches.sh'
+
   config.vm.provision :chef_solo do |chef|
 
     chef.log_level = :debug
@@ -68,8 +75,6 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::rubygems'
     chef.add_recipe 'site::downloads'
     chef.add_recipe 'site::npm'
-    # workaround for http://tickets.opscode.com/browse/CHEF-1327
-    chef.add_recipe 'site::chmod'
 
     chef.add_recipe 'rbenv'
     # is this redundant? https://github.com/RiotGames/rbenv-cookbook/issues/8
@@ -102,6 +107,7 @@ Vagrant::Config.run do |config|
           'vim' => '2:7.3.429-2ubuntu2.1'
         },
         'rubygems' => {
+          'chef' => '10.12.0',
           'tmuxinator' => '0.5.0'
         },
         'symlinks' => {

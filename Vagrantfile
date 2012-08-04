@@ -53,7 +53,7 @@ Vagrant::Config.run do |config|
   # version bumps). this shell provisioner runs first guaranteeing downstream exposure.
   # the should be temporary, in cases when you can't wait for Vagrant to update their
   # base boxes.
-  config.vm.provision :shell, :path => 'provision/shell/patches.sh'
+  config.vm.provision :shell, :path => 'config/shell/patches.sh'
 
   config.vm.provision :chef_solo do |chef|
 
@@ -63,12 +63,12 @@ Vagrant::Config.run do |config|
 
     # todo, yes this chdir stuff is a hack, figure out how to fix it
     originalDir = Dir.pwd
-    Dir.chdir('provision/chef')
+    Dir.chdir('config/chef-repo')
     cli = Librarian::Chef::Cli.new
     cli.install
     Dir.chdir(originalDir)
 
-    chef.cookbooks_path = ['provision/chef/cookbooks', 'provision/chef/site-cookbooks']
+    chef.cookbooks_path = ['config/chef-repo/cookbooks', 'config/chef-repo/site-cookbooks']
 
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'

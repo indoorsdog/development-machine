@@ -65,16 +65,13 @@ Vagrant::Config.run do |config|
 
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'
-    chef.add_recipe 'site::rubygems'
     chef.add_recipe 'site::downloads'
-    chef.add_recipe 'site::npm'
+#    chef.add_recipe 'site::npm'
     # workaround for http://tickets.opscode.com/browse/CHEF-1327
     chef.add_recipe 'site::chmod'
 
-    chef.add_recipe 'rbenv'
-    # is this redundant? https://github.com/RiotGames/rbenv-cookbook/issues/8
-    chef.add_recipe 'rbenv::ruby_build'
-    chef.add_recipe 'rbenv::ohai_plugin'
+    chef.add_recipe 'ruby_build'
+    chef.add_recipe 'rbenv::user'
 
     chef.json = {
       'site' => {
@@ -115,6 +112,27 @@ Vagrant::Config.run do |config|
         'version' => '3.2.3',
         'distribute_install_py_version' => '3.2'
       },
+      'ruby_build' => {
+        'git_ref' => 'v20120524'
+      },
+      'rbenv' => {
+        'git_ref' => 'v0.3.0',
+        'user_installs' => [
+          {
+            'user' => 'vagrant',
+            'rubies' => [ '1.9.3-p194' ],
+            'global' => '1.9.3-p194',
+            'gems' => {
+              '1.9.3-p194' => [
+                {
+                  'name' => 'i18n',
+                  'version' => '0.6.0'
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
   end
 

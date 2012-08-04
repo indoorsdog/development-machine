@@ -75,7 +75,6 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::downloads'
 #    chef.add_recipe 'site::npm'
     # workaround for http://tickets.opscode.com/browse/CHEF-1327
-    chef.add_recipe 'site::chmod'
 
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'rbenv::user'

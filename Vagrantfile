@@ -132,8 +132,8 @@ Vagrant::Config.run do |config|
             'gems' => {
               '1.9.3-p194' => [
                 {
-                  'name' => 'i18n',
-                  'version' => '0.6.0'
+                  'name' => 'tmuxinator',
+                  'version' => '0.5.0'
                 }
               ]
             }

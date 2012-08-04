@@ -73,8 +73,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'
     chef.add_recipe 'site::downloads'
-#    chef.add_recipe 'site::npm'
-    # workaround for http://tickets.opscode.com/browse/CHEF-1327
+    # chef.add_recipe 'site::npm'
 
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'rbenv::user'
@@ -123,7 +122,9 @@ Vagrant::Config.run do |config|
         'git_ref' => 'v20120524'
       },
       'rbenv' => {
-        'git_ref' => 'v0.3.0',
+        # can't use latest tag number, something was fixed between it
+        # and https://github.com/sstephenson/rbenv/tree/6778c8e905d774d4dc70724c455e6fcff4c1d3e1
+        # 'git_ref' => 'v0.3.0',
         'user_installs' => [
           {
             'user' => 'vagrant',

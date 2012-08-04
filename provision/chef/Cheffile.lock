@@ -1,18 +1,39 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.1.0)
+    tmux (1.0.0)
+    vim (1.0.2)
+    yum (0.8.0)
+
 GIT
   remote: https://github.com/fnichol/chef-rbenv.git
-  ref: master
-  sha: c4dbcc85e3d6dae0eb8c9dc507d5ee915b7ad480
+  ref: v0.6.10
+  sha: dee3edd9f1118aff336539a8e3497704da2aebff
   specs:
-    rbenv (0.6.11)
+    rbenv (0.6.10)
 
 GIT
   remote: https://github.com/fnichol/chef-ruby_build.git
-  ref: master
-  sha: c38d86966694b85db291625b245722208b40b61e
+  ref: v0.6.2
+  sha: 2e45dc11b4f98175cc1f70ad254e22aab213cfb4
   specs:
-    ruby_build (0.6.3)
+    ruby_build (0.6.2)
+
+GIT
+  remote: https://github.com/opscode-cookbooks/python
+  ref: 1.0.8
+  sha: e7d06b4db5aec229a4737b8025482df013ebaefe
+  specs:
+    python (1.0.8)
+      build-essential (>= 0.0.0)
+      yum (>= 0.0.0)
 
 DEPENDENCIES
+  build-essential (= 1.1.0)
+  python (>= 0)
   rbenv (>= 0)
   ruby_build (>= 0)
+  tmux (= 1.0.0)
+  vim (= 1.0.2)
 

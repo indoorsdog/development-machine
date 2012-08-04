@@ -53,7 +53,7 @@ Vagrant::Config.run do |config|
   # version bumps). this shell provisioner runs first guaranteeing downstream exposure.
   # the should be temporary, in cases when you can't wait for Vagrant to update their
   # base boxes.
-  config.vm.provision :shell, :path => 'patches.sh'
+  config.vm.provision :shell, :path => 'provision/shell/patches.sh'
 
   config.vm.provision :chef_solo do |chef|
 

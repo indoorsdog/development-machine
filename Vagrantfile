@@ -1,19 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-librarian_name = 'librarian'
-librarian_version = '0.0.24'
-begin
-  Gem::Specification.find_by_name(librarian_name, librarian_version)
-rescue Gem::LoadError
-  begin
-    require 'vagrant/environment'
-    env = Vagrant::Environment.new
-    env.cli('gem', 'install', librarian_name, '--version', librarian_version)
-  rescue SystemExit
-  end
-end
-
 Vagrant::Config.run do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -58,15 +45,6 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
 
     chef.log_level = :debug
-
-    require 'librarian/chef/cli'
-
-    # todo, yes this chdir stuff is a hack, figure out how to fix it
-    originalDir = Dir.pwd
-    Dir.chdir('config/chef-repo')
-    cli = Librarian::Chef::Cli.new
-    cli.install
-    Dir.chdir(originalDir)
 
     chef.cookbooks_path = ['config/chef-repo/cookbooks', 'config/chef-repo/site-cookbooks']
 

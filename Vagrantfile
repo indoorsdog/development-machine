@@ -46,7 +46,7 @@ Vagrant::Config.run do |config|
 
     chef.log_level = :debug
 
-    chef.cookbooks_path = ['config/chef-repo/cookbooks', 'config/chef-repo/site-cookbooks']
+    chef.cookbooks_path = [[:vm, '/usr/local/chef-repo'], 'config/chef-repo/site-cookbooks']
 
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'

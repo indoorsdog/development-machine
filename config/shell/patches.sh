@@ -1,8 +1,15 @@
 #!/bin/bash
-echo ****** HELLO WORLD ******
-sudo dpkg --purge chef chef-full
-wget -O - http://opscode.com/chef/install.sh | sudo bash
-#sudo apt-get update && sudo aptitude safe-upgrade -y --allow-new-upgrades --allow-new-installs
+
+# chef
+chefVer=`chef-client -v`
+if [[ $chefVer =~ 10\.12\.0 ]]
+then
+    echo chef version up-to-date. not updating.
+else
+    echo "$chefVer. updating..."
+    sudo dpkg --purge chef chef-full
+    wget -nv -O - http://opscode.com/chef/install.sh | sudo bash
+fi
 
 #download chef cookbooks
 #https://github.com/applicationsonline/librarian

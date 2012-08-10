@@ -56,6 +56,8 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'rbenv::user'
 
+    chef.add_recipe 'site::pythonbrew'
+
     chef.json = {
       'site' => {
         'downloads' => {
@@ -80,6 +82,23 @@ Vagrant::Config.run do |config|
 	  'npm' => '1.1.4~dfsg-1',
           'tree' => '1.5.3-2',
           'vim' => '2:7.3.429-2ubuntu2.1'
+        },
+        'pythonbrew' => {
+          'user_installs' => [
+            {
+              'user' => 'vagrant',
+              'pythons' => [ '2.7.3' ],
+              'defaults' => {
+                'python' => '2.7.3',
+                'venv' => 'default'
+              },
+              'venv' => {
+                'default' => [
+                  { 'name' => 'pygments', 'version' => '1.5' }
+                ]
+              }
+            }
+          ]
         },
         'rubygems' => {
           'chef' => '10.12.0',

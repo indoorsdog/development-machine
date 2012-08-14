@@ -88,15 +88,18 @@ Vagrant::Config.run do |config|
             {
               'user' => 'vagrant',
               'pythons' => [ '2.7.3' ],
+              'venv' => {
+                'default' => {
+                  'python' => '2.7.3',
+                  'pip' => [
+                    { 'name' => 'pygments', 'version' => '1.5' }
+                  ]
+                }
+              },
               'defaults' => {
                 'python' => '2.7.3',
                 'venv' => 'default'
               },
-              'venv' => {
-                'default' => [
-                  { 'name' => 'pygments', 'version' => '1.5' }
-                ]
-              }
             }
           ]
         },

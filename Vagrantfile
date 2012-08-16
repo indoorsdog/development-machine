@@ -51,12 +51,10 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::packages'
     chef.add_recipe 'site::symlinks'
     chef.add_recipe 'site::downloads'
-    # chef.add_recipe 'site::npm'
-
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'rbenv::user'
-
     chef.add_recipe 'site::pythonbrew'
+    chef.add_recipe 'site::nvm'
 
     chef.json = {
       'site' => {
@@ -71,15 +69,24 @@ Vagrant::Config.run do |config|
             }
           }
         },
-        'npm' => {
-      	  'coffee-script' => '1.3.3'
+        'nvm' => {
+          'user_installs' => [
+            {
+              'user' => 'vagrant',
+              'nodes' => [ '0.8.6' ],
+              'default' => '0.8.6',
+              'npms' => [
+                {
+                  '0.8.6' => [
+                    { 'name' => 'coffee-script', 'version' => '1.3.3' }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         'packages' => {
-          'git' => '1:1.7.9.5-1',
           'git-flow' => '0.4.1-2',
-          'git-man' => '1:1.7.9.5-1',
-	  'nodejs' => '0.6.12~dfsg1-1ubuntu1',
-	  'npm' => '1.1.4~dfsg-1',
           'tree' => '1.5.3-2',
           'vim' => '2:7.3.429-2ubuntu2.1'
         },
@@ -103,16 +110,9 @@ Vagrant::Config.run do |config|
             }
           ]
         },
-        'rubygems' => {
-          'chef' => '10.12.0',
-          'tmuxinator' => '0.5.0'
-        },
         'symlinks' => {
           '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
         }
-      },
-      'nodejs' => {
-        'version' => '0.8.2'
       },
       'python' => {
         'version' => '3.2.3',

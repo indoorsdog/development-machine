@@ -114,13 +114,6 @@ Vagrant::Config.run do |config|
           '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
         }
       },
-      'python' => {
-        'version' => '3.2.3',
-        'distribute_install_py_version' => '3.2'
-      },
-      'ruby_build' => {
-        'git_ref' => 'v20120524'
-      },
       'rbenv' => {
         # can't use latest tag number, something was fixed between it
         # and https://github.com/sstephenson/rbenv/tree/6778c8e905d774d4dc70724c455e6fcff4c1d3e1

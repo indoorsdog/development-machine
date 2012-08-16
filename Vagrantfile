@@ -65,7 +65,8 @@ Vagrant::Config.run do |config|
             },
 	    'git' => {
 	      '/home/vagrant/.vim/bundle/vim-colors-solarized' => 'https://github.com/altercation/vim-colors-solarized',
-	      '/home/vagrant/.vim/bundle/vim-coffee-script' => 'https://github.com/kchmck/vim-coffee-script.git'
+	      '/home/vagrant/.vim/bundle/vim-coffee-script' => 'https://github.com/kchmck/vim-coffee-script.git',
+	      '/home/vagrant/.vim/bundle/vim-colorschemes' => 'https://github.com/flazz/vim-colorschemes.git'
             }
           }
         },

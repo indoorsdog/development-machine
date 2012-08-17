@@ -17,7 +17,7 @@ if [[ $gitVer =~ 1\.7\.9\.5 ]]
 then
     echo git version up-to-date. not updating.
 else
-    "$gitVer. updating..."
+    echo "$gitVer. updating..."
     sudo apt-get install git=1:1.7.9.5-1 --assume-yes
 fi
 

@@ -17,18 +17,10 @@ json.each do |user_install|
     user user
     action :checkout
   end
-  script 'write nvm.sh to /etc/profile.d/...' do
-    interpreter "bash"
-    user "root"
-    code <<-EOH
-    if [ ! -f /etc/profile.d/nvm.sh ]; then
-      sudo echo "#!/bin/bash
-if [ -d ~/nvm ]; then
-    . ~/nvm/nvm.sh
-    [[ -r ~/nvm/bash_completion ]] && . ~/nvm/bash_completion
-fi" > /etc/profile.d/nvm.sh
-    fi
-    EOH
+  template '/etc/profile.d/nvm.sh' do
+    mode '0755'
+    owner 'root'
+    source 'nvm.sh.erb'
   end
   user_install['nodes'].each do |nodejs|
     script "installing nodejs version #{nodejs} for user #{user}..." do

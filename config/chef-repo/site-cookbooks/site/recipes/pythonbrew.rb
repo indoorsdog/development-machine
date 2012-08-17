@@ -24,7 +24,8 @@ def install_pythonbrew(user, default_python, default_venv)
     EOH
   end
   template '/etc/profile.d/pythonbrew.sh' do
-    mode '0644'
+    mode '0755'
+    owner 'root'
     variables(
       :python => default_python,
       :venv => default_venv

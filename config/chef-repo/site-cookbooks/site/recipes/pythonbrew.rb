@@ -1,7 +1,7 @@
 json = JSON.parse node[:site][:pythonbrew][:user_installs].to_json
 puts json
 
-def install_pythonbrew(user)
+def install_pythonbrew(user, default_python, default_venv)
   # TODO: need to install this stuff here?
   # TODO: python and/or pythonbrew doesn't seem to take care of installing these
   # TODO: and they are needed for some installs
@@ -25,6 +25,10 @@ def install_pythonbrew(user)
   end
   template '/etc/profile.d/pythonbrew.sh' do
     mode '0644'
+    variables(
+      :python => default_python,
+      :venv => default_venv
+    )
     source 'pythonbrew.sh.erb'
   end
 end
@@ -69,7 +73,7 @@ def install_package(user, python, project, package_name, package_version)
 end
 
 json.each do |user_install|
-  install_pythonbrew user_install['user']
+  install_pythonbrew(user_install['user'], user_install['defaults']['python'], user_install['defaults']['venv'])
   user_install['pythons'].each do |python|
     install_python(user_install['user'], python)
   end
@@ -79,8 +83,4 @@ json.each do |user_install|
       install_package(user_install['user'], details['python'], project, package['name'], package['version'])
     end
   end
-  default_python = user_install['defaults']['python']
-  default_venv = user_install['defaults']['venv']
-  print 'defaults->python=' + default_python
-  print 'defaults->venv=' + default_venv
 end

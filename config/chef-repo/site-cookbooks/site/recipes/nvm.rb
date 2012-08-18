@@ -5,12 +5,6 @@ json.each do |user_install|
   user = user_install['user']
   nvmDir = "/home/#{user}/nvm"
   defaultNode = user_install['default']
-  execute 'create dir' do
-    command "sudo mkdir -p #{nvmDir}"
-  end
-  execute 'chown dir' do
-    command "sudo chown -R #{user}:#{user} #{nvmDir}"
-  end
   git nvmDir do
     repository 'https://github.com/creationix/nvm.git'
     group user
@@ -22,6 +16,9 @@ json.each do |user_install|
     owner 'root'
     source 'nvm.sh.erb'
   end
+  package 'curl'
+  package 'make'
+  package 'build-essential'
   user_install['nodes'].each do |nodejs|
     script "installing nodejs version #{nodejs} for user #{user}..." do
       interpreter "bash"

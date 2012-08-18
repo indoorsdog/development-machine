@@ -1,2 +1,7 @@
-[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
-[[ ! -s $HOME/.pythonbrew/etc/current  ]] && pythonbrew use <%= @python %> && pythonbrew venv use <%= @venv %>
+if [ -s $HOME/.pythonbrew/etc/bashrc ]; then
+  source $HOME/.pythonbrew/etc/bashrc
+  if [ ! -s $HOME/.pythonbrew/etc/current ]; then
+    pythonbrew use <%= @python %>
+    pythonbrew venv use <%= @venv %>
+  fi
+fi

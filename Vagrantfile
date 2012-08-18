@@ -87,6 +87,8 @@ Vagrant::Config.run do |config|
           ]
         },
         'packages' => {
+          'curl' => '7.22.0-3ubuntu4',
+          'libbz2-dev' => '1.0.6-1',
           'git-flow' => '0.4.1-2',
           'tree' => '1.5.3-2',
           'vim' => '2:7.3.429-2ubuntu2.1'

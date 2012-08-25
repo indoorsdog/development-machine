@@ -57,41 +57,49 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'site::nvm'
 
     chef.json = {
+      'users' => [
+        { 'name' => 'vagrant' }
+      ],
       'site' => {
+        'packages' => [
+          {'name' => 'curl',                              'version' => '7.22.0-3ubuntu4'},
+          {'name' => 'libbz2-dev',                        'version' => '1.0.6-1'},
+          {'name' => 'git-flow',                          'version' => '0.4.1-2'},
+          {'name' => 'tree',                              'version' => '1.5.3-2'},
+          {'name' => 'vim',                               'version' => '2:7.3.429-2ubuntu2.1'}
+        ],
         'downloads' => {
-	  'vim' =>  {
-	    'file' => {
-	      '/home/vagrant/.vim/autoload/pathogen.vim' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
-            },
-	    'git' => {
-	      '/home/vagrant/.vim/bundle/vim-colors-solarized' => 'https://github.com/altercation/vim-colors-solarized',
-	      '/home/vagrant/.vim/bundle/vim-coffee-script' => 'https://github.com/kchmck/vim-coffee-script.git',
-	      '/home/vagrant/.vim/bundle/vim-colorschemes' => 'https://github.com/flazz/vim-colorschemes.git'
-            }
-          }
-        },
-        'nvm' => {
-          'user_installs' => [
+          'file' => [
             {
-              'user' => 'vagrant',
-              'nodes' => [ '0.8.6' ],
-              'default' => '0.8.6',
-              'npms' => [
-                {
-                  '0.8.6' => [
-                    { 'name' => 'coffee-script', 'version' => '1.3.3' }
-                  ]
-                }
-              ]
+              'dest' => '/home/vagrant/.vim/autoload/pathogen.vim',
+              'src' => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
+            }
+          ],
+          'git' => [
+            {
+              'master' => '/home/vagrant/.vim/bundle/vim-colors-solarized',
+              'origin' => 'https://github.com/altercation/vim-colors-solarized'
+            },
+            {
+              'master' => '/home/vagrant/.vim/bundle/vim-coffee-script',
+              'origin' => 'https://github.com/kchmck/vim-coffee-script.git'
+            },
+            {
+              'master' => '/home/vagrant/.vim/bundle/vim-colorschemes',
+              'origin' => 'https://github.com/flazz/vim-colorschemes.git'
             }
           ]
         },
-        'packages' => {
-          'curl' => '7.22.0-3ubuntu4',
-          'libbz2-dev' => '1.0.6-1',
-          'git-flow' => '0.4.1-2',
-          'tree' => '1.5.3-2',
-          'vim' => '2:7.3.429-2ubuntu2.1'
+        'nvm' => {
+          'nodes' => [ '0.8.6' ],
+          'default' => '0.8.6',
+          'npms' => [
+            {
+              '0.8.6' => [
+                { 'name' => 'coffee-script', 'version' => '1.3.3' }
+              ]
+            }
+          ]
         },
         'pythonbrew' => {
           'user_installs' => [
@@ -113,9 +121,12 @@ Vagrant::Config.run do |config|
             }
           ]
         },
-        'symlinks' => {
-          '/vagrant/home/.vimrc' => '/home/vagrant/.vimrc'
-        }
+        'symlinks' => [
+          {
+            'target' =>'/vagrant/home/.vimrc',
+            'link_name' => '/home/vagrant/.vimrc'
+          }
+        ]
       },
       'rbenv' => {
         # can't use latest tag number, something was fixed between it

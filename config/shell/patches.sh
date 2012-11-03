@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt-get update
+
 # chef
 chefVer=`chef-client -v`
 if [[ $chefVer =~ 10\.12\.0 ]]
@@ -25,7 +27,7 @@ fi
 #https://github.com/applicationsonline/librarian
 if [ ! `which librarian-chef` ]; then
     "installing librarian-chef..."
-    gem  install librarian --version 0.0.24
+    gem  install librarian --version 0.0.25
     mkdir /usr/local/chef-repo
     cp /vagrant/config/chef-repo/Cheffile /usr/local/chef-repo/Cheffile
     cp /vagrant/config/chef-repo/Cheffile.lock /usr/local/chef-repo/Cheffile.lock

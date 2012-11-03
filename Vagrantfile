@@ -74,11 +74,11 @@ Vagrant::Config.run do |config|
           'user_installs' => [
             {
               'user' => 'vagrant',
-              'nodes' => [ '0.8.6' ],
-              'default' => '0.8.6',
+              'nodes' => [ '0.8.14' ],
+              'default' => '0.8.14',
               'npms' => [
                 {
-                  '0.8.6' => [
+                  '0.8.14' => [
                     { 'name' => 'coffee-script', 'version' => '1.3.3' }
                   ]
                 }
